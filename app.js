@@ -1,4 +1,6 @@
+'use strict';
 
+ 
 function Employee(id, fullName, department, level) {
     this.id = id;
     this.fullName = fullName;
@@ -8,7 +10,7 @@ function Employee(id, fullName, department, level) {
     this.salary = 0;
 }
   
- 
+
 Employee.prototype.calculateSalary = function() {
     var minSalary, maxSalary;
     switch (this.level) {
@@ -34,7 +36,7 @@ Employee.prototype.calculateSalary = function() {
 };
   
 
-//protoType function to render the emps info
+
 Employee.prototype.render = function() {
     var employeeInfo = document.getElementById("employee-info");
     var employeeRow = document.createElement("tr");
@@ -45,7 +47,7 @@ Employee.prototype.render = function() {
     <td>${this.level}</td>
     <td>$${this.salary}</td>
     `;
-
+   
     employeeInfo.appendChild(employeeRow);
 };
 
@@ -64,7 +66,7 @@ employees.forEach(function(employee) {
     employee.calculateSalary();
 });
   
-
+//to render empInfo
 employees.forEach(function(employee) {
     employee.render();
 });
