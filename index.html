@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="style.css">
-    <title>HR-Manamgemnt-System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <title>HR Management System</title>
 </head>
 <body>
     <header>
@@ -17,35 +19,71 @@
             </ul>
         </nav>
     </header>
+    
+    
+
     <main>
-        <div id="empInfo">
-            <table id="table">
-              <thead>
-                <tr>
-                  <th>Employee ID</th>
-                  <th>Full Name</th>
-                  <th>Department</th>
-                  <th>Level</th>
-                  <th>Salary</th>
-                </tr>
-              </thead>
-              <tbody id="employee-info"></tbody>
-            </table>
+        <div class="container">
+
+            <form id="employeeForm">
+              
+              <label for="fullName">Full Name</label>
+              <input type="text" required id="fullName" placeholder="Enter your full name"> <br>
+            
+              <label for="department">Department</label>
+              <select id="department" required>
+                <option value="Administration">Administration</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Development">Development</option>
+                <option value="Finance">Finance</option>
+              </select> <br>
+  
+              <label for="level">Level</label>
+              <select id="level" required>
+                <option value="Junior">Junior</option>
+                <option value="Mid-Senior">Mid Senior</option>
+                <option value="Senior">Senior</option>
+              </select> <br>
+  
+              <label for="imgUrl">Img Url</label>
+              <input type="text"  id="imgUrl" placeholder="put you img url here">
+            
+              <button type="submit">Go</button>
+            
+            </form>
           </div>
-    </main>
+  
+        <div id="empCards"></div>
+        <div id="empInfo">
+          <table id="table">
+            <thead>
+              <tr>
+                <th>Employee ID</th>
+                <th>Full Name</th>
+                <th>Department</th>
+                <th>Level</th>
+                <th>Salary</th>
+              </tr>
+            </thead>
+            <tbody id="employee-info"></tbody>
+          </table>
+        </div>
 
-    <footer> 
-        <footer>
-            <ul>
-              <li>Email</li>
-              <li>Twitter</li>
-              <li>LInked in</li>
-            </ul>
-            <p>&copy; All rights reserved@LTUC-ASAC</p>
-          </footer>
-    </footer>
+
+      </main>
 
 
-    <script  src="app.js"></script>
+  <footer>
+    <ul>
+      <li>Instagram</li>
+      <li>Facebook</li>
+      <li>LInked in</li>
+    </ul>
+    <p>&copy; All rights reserved@LTUC-ASAC</p>
+  </footer>
+
+  <script src="app.js"></script>
+  <script src="cards.js"></script>
+
 </body>
 </html>

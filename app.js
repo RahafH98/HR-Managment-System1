@@ -1,3 +1,4 @@
+'use strict';
 
 function Employee(id, fullName, department, level) {
     this.id = id;
@@ -8,7 +9,6 @@ function Employee(id, fullName, department, level) {
     this.salary = 0;
 }
   
- 
 Employee.prototype.calculateSalary = function() {
     var minSalary, maxSalary;
     switch (this.level) {
@@ -34,7 +34,6 @@ Employee.prototype.calculateSalary = function() {
 };
   
 
-//protoType function to render the emps info
 Employee.prototype.render = function() {
     var employeeInfo = document.getElementById("employee-info");
     var employeeRow = document.createElement("tr");
@@ -45,10 +44,8 @@ Employee.prototype.render = function() {
     <td>${this.level}</td>
     <td>$${this.salary}</td>
     `;
-
     employeeInfo.appendChild(employeeRow);
 };
-
 
 var employees = [
   new Employee(1000, "Ghazi Samer", "Administration", "Senior"),
@@ -64,7 +61,10 @@ employees.forEach(function(employee) {
     employee.calculateSalary();
 });
   
-
 employees.forEach(function(employee) {
     employee.render();
 });
+var employeesJSON = JSON.stringify(employees);
+localStorage.setItem('employees', employeesJSON);
+var employeesJSON = localStorage.getItem('employees');
+var employees = JSON.parse(employeesJSON);
