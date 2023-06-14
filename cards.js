@@ -1,15 +1,11 @@
 'use strict';
 
+let allEmployees = [];
 
-const allEmployees = [];
 
-// Get the <div> element for employee cards from the HTML file by its id
 let empCardsDiv = document.getElementById("empCards");
-
-// Get the <form> element from the HTML file by its id
 let employeeForm = document.getElementById("employeeForm");
 
-// Create a constructor function for Employee
 function Employee(fullName, department, level, imgUrl) {
   this.fullName = fullName;
   this.department = department;
@@ -19,7 +15,6 @@ function Employee(fullName, department, level, imgUrl) {
   allEmployees.push(this);
 }
 
-// Render method to render employee information in a card
 Employee.prototype.renderEmployeeCard = function() {
   let cardDiv = document.createElement("div");
   cardDiv.classList.add("card");
@@ -51,7 +46,6 @@ Employee.prototype.renderEmployeeCard = function() {
   empCardsDiv.appendChild(cardDiv);
 };
 
-// Function to generate a unique four-digit employee id number
 function generateEmployeeId() {
   let id = "";
   while (id.length < 4) {
@@ -60,35 +54,32 @@ function generateEmployeeId() {
   return id;
 }
 
-let employee1 = new Employee("Gahzi Ahmad", "Administration", "Senior", "/home/rahaf/HR-Managment-System1/ghazi.jpg");
-let employee2 = new Employee("Hadi Mohammad", "Marketing", "Mid-Senior", "/home/rahaf/HR-Managment-System1/hadi.jpg");
-let employee3 = new Employee("Lana Hassan", "Development", "Junior", "/home/rahaf/HR-Managment-System1/lana.jpg");
-
+let employee1 = new Employee("Omar Ahmad", "Administration", "Senior", "./omar.jpg");
+let employee2 = new Employee("Rana Mohammad", "Marketing", "Mid-Senior", "./rana.jpg");
 
 employee1.renderEmployeeCard();
 employee2.renderEmployeeCard();
 employee3.renderEmployeeCard();
 
 
+// Event listener for the form submission
 employeeForm.addEventListener("submit", submitHandler);
 
-
+// Submit handler function to handle the form submission event
 function submitHandler(event) {
   event.preventDefault();
 
-
+  // Retrieve values from the form inputs
   let fullName = event.target.elements.fullName.value;
   let department = event.target.elements.department.value;
   let level = event.target.elements.level.value;
   let imgUrl = event.target.elements.imgUrl.value;
 
-
   let newEmployee = new Employee(fullName, department, level, imgUrl);
 
- 
+  // Render the employee card
   newEmployee.renderEmployeeCard();
+  saveData(allEmployees);
 
-  // Reset the form inputs
   employeeForm.reset();
 }
-

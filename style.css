@@ -12,14 +12,6 @@ header {
     gap: 20px;
 }
 
-
-  
-  /* header ul li a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 10px;
-  } */
-
 ul {
     list-style-type: none;
     overflow: hidden;
@@ -38,36 +30,17 @@ li a {
 }
   
 li a:hover {
-    background-color: rgb(232, 169, 169);
-    transform: scale(0.75);
+    background-color: rgb(5, 128, 60);
     border-radius: 8px;
 }
-  
-  /* Table */
-  /* #table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  #table th {
-    background-color: rgb(70, 69, 140);
-    color: #fff;
-    padding: 10px;
-  }
-  
-  #table td {
-    padding: 10px;
-    border: 1px solid rgb(232, 169, 169);
-  } */
 
   
 #table{
     text-align: center;
-    /* border: 5px solid rgb(70, 69, 140); */
     margin: auto;
     width: 50%;
     padding: 10px;
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -95,7 +68,7 @@ td {
 }
 
 tr:hover {
-    background-color: rgba(70, 69, 140, 0.3);
+    background-color: rgba(5, 128, 60, 0.5);
 }
 
 footer {
