@@ -56,6 +56,7 @@ function generateEmployeeId() {
 
 let employee1 = new Employee("Omar Ahmad", "Administration", "Senior", "./omar.jpg");
 let employee2 = new Employee("Rana Mohammad", "Marketing", "Mid-Senior", "./rana.jpg");
+let employee3 = new Employee ("Hadi omar", "Administration","Senior","./hadi.jpg")
 
 employee1.renderEmployeeCard();
 employee2.renderEmployeeCard();
