@@ -63,14 +63,13 @@ employee2.renderEmployeeCard();
 employee3.renderEmployeeCard();
 
 
-// Event listener for the form submission
 employeeForm.addEventListener("submit", submitHandler);
 
-// Submit handler function to handle the form submission event
+
 function submitHandler(event) {
   event.preventDefault();
 
-  // Retrieve values from the form inputs
+
   let fullName = event.target.elements.fullName.value;
   let department = event.target.elements.department.value;
   let level = event.target.elements.level.value;
@@ -78,9 +77,36 @@ function submitHandler(event) {
 
   let newEmployee = new Employee(fullName, department, level, imgUrl);
 
-  // Render the employee card
+
   newEmployee.renderEmployeeCard();
   saveData(allEmployees);
 
   employeeForm.reset();
 }
+
+function saveData(data){
+  let stringArr = JSON.stringify(data); 
+  localStorage.setItem('Emps', stringArr);
+}
+
+
+function getData() {
+  let retrievedData = localStorage.getItem('Emps');
+  let parsedData = JSON.parse(retrievedData);
+
+  if (parsedData) {
+    for (let i = 3; i < parsedData.length; i++) {
+      let employeeData = parsedData[i];
+      let employee = new Employee(
+        employeeData.fullName,
+        employeeData.department,
+        employeeData.level,
+        employeeData.imgUrl
+      );
+      employee.renderEmployeeCard();
+    }
+  }
+}
+
+
+getData();

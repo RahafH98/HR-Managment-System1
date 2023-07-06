@@ -69,4 +69,45 @@ footer {
   }
   
   
-   
+  #table{
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    /* border-collapse: collapse; */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid rgb(51, 51, 47);
+    border-left: 1px solid rgb(51, 51, 47);
+  }
+  
+  th {
+    padding: 12px;
+  }
+  
+  td {
+    padding: 10px;
+    text-align: center;
+    border-right: 1px solid rgb(51, 51, 47);
+  }
+  
+  #table thead th {
+    background-color: rgb(5, 128, 60);
+    color: white;
+    text-align: center;
+  }
+  
+  #table tfoot th {
+    background-color: rgb(5, 128, 60);
+    color: white;
+    text-align: center;
+  }
+  
+  tr:hover {
+    background-color: rgba(5, 128, 60, 0.5);
+  
+  }
