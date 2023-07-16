@@ -1,3 +1,4 @@
+
 'use strict';
 
 function Employee(id, fullName, department, level) {
