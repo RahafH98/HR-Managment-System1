@@ -1,112 +1,120 @@
 'use strict';
 
-let allEmployees = [];
-
-
+// Global variables
+var allEmployees = [];
 let empCardsDiv = document.getElementById("empCards");
 let employeeForm = document.getElementById("employeeForm");
 
-function Employee(fullName, department, level, imgUrl) {
+// Employee constructor
+function Employee(id, fullName, department, level, imgUrl) {
+  this.id = id;
   this.fullName = fullName;
   this.department = department;
   this.level = level;
   this.imgUrl = imgUrl;
-  this.employeeId = generateEmployeeId();
+  this.salary = 0;
   allEmployees.push(this);
 }
 
-Employee.prototype.renderEmployeeCard = function() {
+// Render employee card
+function renderEmployeeCard(employee) {
   let cardDiv = document.createElement("div");
   cardDiv.classList.add("card");
 
   let imgElem = document.createElement("img");
-  imgElem.src = this.imgUrl;
+  imgElem.src = employee.imgUrl;
   cardDiv.appendChild(imgElem);
 
   let infoDiv = document.createElement("div");
   infoDiv.classList.add("info");
 
   let nameElem = document.createElement("h3");
-  nameElem.textContent = this.fullName;
+  nameElem.textContent = employee.fullName;
   infoDiv.appendChild(nameElem);
 
   let deptElem = document.createElement("p");
-  deptElem.textContent = "Department: " + this.department;
+  deptElem.textContent = "Department: " + employee.department;
   infoDiv.appendChild(deptElem);
 
   let levelElem = document.createElement("p");
-  levelElem.textContent = "Level: " + this.level;
+  levelElem.textContent = "Level: " + employee.level;
   infoDiv.appendChild(levelElem);
 
   let idElem = document.createElement("p");
-  idElem.textContent = "Employee ID: " + this.employeeId;
+  idElem.textContent = "Employee ID: " + employee.id;
   infoDiv.appendChild(idElem);
 
   cardDiv.appendChild(infoDiv);
   empCardsDiv.appendChild(cardDiv);
-};
+}
 
+// Generate unique employee ID
 function generateEmployeeId() {
   let id = "";
-  while (id.length < 4) {
-    id += Math.floor(Math.random() * 10);
+  let isUnique = false;
+
+  while (!isUnique) {
+    id = "";
+    while (id.length < 4) {
+      id += Math.floor(Math.random() * 10);
+    }
+    isUnique = !allEmployees.some(employee => employee.id === id);
   }
+
   return id;
 }
 
-let employee1 = new Employee("Omar Ahmad", "Administration", "Senior", "./omar.jpg");
-let employee2 = new Employee("Rana Mohammad", "Marketing", "Mid-Senior", "./rana.jpg");
-let employee3 = new Employee ("Hadi omar", "Administration","Senior","./hadi.jpg")
+// Load stored employees from localStorage
+function loadStoredEmployees() {
+  let storedEmployees = JSON.parse(localStorage.getItem('employees'));
+  if (storedEmployees && Array.isArray(storedEmployees)) {
+    allEmployees = storedEmployees;
+  }
+}
 
-employee1.renderEmployeeCard();
-employee2.renderEmployeeCard();
-employee3.renderEmployeeCard();
+// Create initial employees
+function createInitialEmployees() {
+  let employee1 = new Employee(generateEmployeeId(), "Gahzi Ahmad", "Administration", "Senior", "./assets/Ghazi.jpg");
+  let employee2 = new Employee(generateEmployeeId(), "Hadi Mohammad", "Marketing", "Mid-Senior", "./assets/Hadi.jpg");
+  let employee3 = new Employee(generateEmployeeId(), "Lana Hassan", "Development", "Junior", "./assets/Lana.jpg");
 
+  renderEmployeeCard(employee1);
+  renderEmployeeCard(employee2);
+  renderEmployeeCard(employee3);
+}
 
-employeeForm.addEventListener("submit", submitHandler);
-
-
+// Form submission handler
 function submitHandler(event) {
   event.preventDefault();
-
 
   let fullName = event.target.elements.fullName.value;
   let department = event.target.elements.department.value;
   let level = event.target.elements.level.value;
   let imgUrl = event.target.elements.imgUrl.value;
 
-  let newEmployee = new Employee(fullName, department, level, imgUrl);
+  let newEmployee = new Employee(generateEmployeeId(), fullName, department, level, imgUrl);
 
-
-  newEmployee.renderEmployeeCard();
+  renderEmployeeCard(newEmployee);
   saveData(allEmployees);
 
   employeeForm.reset();
 }
 
-function saveData(data){
-  let stringArr = JSON.stringify(data); 
-  localStorage.setItem('Emps', stringArr);
+// Save employee data to localStorage
+function saveData(data) {
+  let employeesJSON = JSON.stringify(data);
+  localStorage.setItem('employees', employeesJSON);
 }
 
+// Load stored employees, create initial employees, and set up event listener
+function initialize() {
+  loadStoredEmployees();
+  createInitialEmployees();
 
-function getData() {
-  let retrievedData = localStorage.getItem('Emps');
-  let parsedData = JSON.parse(retrievedData);
-
-  if (parsedData) {
-    for (let i = 3; i < parsedData.length; i++) {
-      let employeeData = parsedData[i];
-      let employee = new Employee(
-        employeeData.fullName,
-        employeeData.department,
-        employeeData.level,
-        employeeData.imgUrl
-      );
-      employee.renderEmployeeCard();
-    }
-  }
+  employeeForm.addEventListener("submit", submitHandler);
 }
 
-
-getData();
+// Initialize the employee management system
+initialize();
+saveData(allEmployees);
+loadStoredEmployees()

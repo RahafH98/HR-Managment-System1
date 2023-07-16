@@ -1,40 +1,41 @@
-.container {
+
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-form {
+  }
+  
+  form {
   margin-bottom: 20px;
   margin-top: 40px;
-}
-
-label {
+  }
+  
+  label {
   font-weight: bold;
   color: rgb(2, 2, 2);
   display: block;
   margin-bottom: 5px;
-}
-
-
-input[type="text"],
-select {
+  }
+  
+  
+  input[type="text"],
+  select {
   width: 300px;
   height: 30px;
   padding: 5px;
   border: 1px solid rgb(19, 18, 18);
   border-radius: 5px;
   margin-bottom: 10px;
-}
-
-input[type="text"]:focus,
-select:focus {
+  }
+  
+  input[type="text"]:focus,
+  select:focus {
     /* outline-color: red; */
   outline-color: rgb(182, 235, 204);
-}
-
-
-button[type="submit"] {
+  }
+  
+  
+  button[type="submit"] {
   padding: 10px 20px;
   background-color: rgb(5, 128, 60);
   color: white;
@@ -44,17 +45,40 @@ button[type="submit"] {
   transition: background-color 0.3s ease;
   display: block;
   
-}
-
-button[type="submit"]:hover {
+  }
+  
+  button[type="submit"]:hover {
   background-color: rgba(5, 128, 60, 0.5);
-}
-
-/* button[type="submit"]:focus {
+  }
+  
+  
+  button[type="reset"] {
+    padding: 10px 20px;
+    background-color: rgb(5, 128, 60);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    
+    }
+    
+    button[type="reset"]:hover {
+    background-color: rgba(5, 128, 60, 0.5);
+    }
+    
+  
+  /* button[type="submit"]:focus {
   outline: none;
-} */
-
-.card {
+  } */
+  
+  .card-outer{
+    display:flex;
+    justify-content: center;
+  }
+  
+  .card {
     display: inline-block;
     border: 1px solid black;
     padding: 10px;
@@ -73,7 +97,7 @@ button[type="submit"]:hover {
     margin: 0 auto;
     margin-bottom: 10px;
   }
-
+  
   .card h3 {
     margin: 0;
     font-size: 1.2rem;
